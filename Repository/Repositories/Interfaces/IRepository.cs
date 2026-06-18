@@ -10,7 +10,9 @@ namespace Repository.Repositories.Interfaces
         void Delete(T entity);
         T Update(T entity, int id);
         T Get(Predicate<T> predicate);
-        List<T> GetAll(Predicate<T> predicate = null);
+        List<T> GetAll(Predicate<T> predicate);
+        List<T> GetAll();
         List<T> GetAll(int page, int pageSize);
+        List<T> Search(string query);
     }
 }

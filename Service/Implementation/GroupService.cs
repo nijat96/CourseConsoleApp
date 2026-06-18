@@ -1,14 +1,14 @@
 ﻿using Domain.Entities;
-using Interface;
 using Repository.Repositories.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks.Dataflow;
+using Interface;
 
 namespace Service.Implementation
 {
-    public class GroupService : Interface.GroupService
+    public class GroupService : IGroupService
     {
         private static int count;
         private readonly GroupRepository _repository =new();
@@ -47,10 +47,7 @@ namespace Service.Implementation
 
         public List<Group> Search(string query)
         {
-            return _repository.GetAll(x=>
-                                        x.Teacher.ToLower().Contains(query.ToLower().Trim()) || 
-                                        x.Room.ToLower().Contains(query.ToLower().Trim()) || 
-                                        x.Name.ToLower().Contains(query.ToLower().Trim()));
+            return _repository.Search(query);
         }
 
         public Group UpdateGroup(int id, Group group)

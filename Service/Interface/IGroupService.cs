@@ -4,7 +4,7 @@ using System;
 
 namespace Interface
 {
-    public interface GroupService
+    public interface IGroupService
     {
         // 1 - Create Group, 2 - Update group, 3 - Delete Group, 4 - Get group  by id, 5 - Get all groups by teacher ,
         // 6 - Get all groups by room, 7 - Get all groups, 14- Search method for groups 
@@ -19,8 +19,6 @@ namespace Interface
 
 
 
-       //    , 8 - Create Student  9 - Update Student   ,
-       // 10- Get student  by id, 11 - Delete student,12 - Get students   by age, 13 - Get all students by group id,
-       // , 15 - Search method for students by name or surname.
+       
     }
 }
