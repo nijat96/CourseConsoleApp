@@ -7,7 +7,6 @@ namespace Domain.Entities
     public class Student
     {
         //name, surname, age, group,
-        private static int ID;
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -15,8 +14,6 @@ namespace Domain.Entities
 
         public Student(string name, string surname, int age)
         {
-            ID++;
-            Id = ID;
             Name = name;
             Surname = surname;
             Age = age;

@@ -1,0 +1,16 @@
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.csproj.AssemblyReference.cache
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.AssemblyInfoInputs.cache
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.AssemblyInfo.cs
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.sourcelink.json
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\bin\Debug\net10.0\Repository.deps.json
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\bin\Debug\net10.0\Repository.dll
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\bin\Debug\net10.0\Repository.pdb
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\bin\Debug\net10.0\Domain.dll
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\bin\Debug\net10.0\Domain.pdb
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.csproj.Up2Date
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.dll
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\refint\Repository.dll
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\Repository.pdb
+C:\Users\nijat\source\repos\C#\CourseConsoleApp\Repository\obj\Debug\net10.0\ref\Repository.dll

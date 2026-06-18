@@ -8,8 +8,9 @@ namespace Repository.Repositories.Interfaces
     {
         void Add(T entity);
         void Delete(T entity);
-        void Update(T entity);
+        T Update(T entity, int id);
         T Get(Predicate<T> predicate);
-        List<T> GetAll(Predicate<T> predicate);
+        List<T> GetAll(Predicate<T> predicate = null);
+        List<T> GetAll(int page, int pageSize);
     }
 }
