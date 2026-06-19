@@ -15,7 +15,7 @@ namespace Service.Implementation
         public void CreateGroup(Group group)
         {
             count++;
-            group.SetId(group.Id);
+            group.SetId(count);
             _repository.Add(group);
         }
 
