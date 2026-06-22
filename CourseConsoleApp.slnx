@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="PresentationConsoleApp/PresentationConsoleApp.csproj" />
+  <Project Path="Repository/Repository.csproj" />
+  <Project Path="Service/Service.csproj" />
+</Solution>
