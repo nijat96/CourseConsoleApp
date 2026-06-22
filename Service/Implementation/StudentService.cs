@@ -11,11 +11,9 @@ namespace Service.Implementation
 
         public void CreateStudent(Student student)
         {
-
-                count++;
-                student.SetId(count);
-                _repository.Add(student);
-
+            count++;
+            student.SetId(count);
+            _repository.Add(student);
         }
 
         public void DeleteStudent(int id)
@@ -68,7 +66,6 @@ namespace Service.Implementation
         {
             return _repository.Update(student, id);
         }
-
 
     }
 }

@@ -13,7 +13,7 @@ namespace Service.Interface
         void CreateStudent(Student student);
         void DeleteStudent(int id);
         Student GetStudentById(int id);
-        Student UpdateSudent(int id, Student student);
+        Student UpdateStudent(int id, Student student);
         List<Student> GetAllStudents();
         List<Student> GetStudentsByAge(int age);
         List<Student> GetStudentsByGroupId(int groupId);
