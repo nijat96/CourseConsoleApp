@@ -12,7 +12,6 @@ namespace Domain.Entities
         public string Surname { get; set; }
         public int Age { get; set; }
         public int GroupId { get; set; }
-        public Group Group { get; private set; }
 
         public Student(string name, string surname, int age, int groupId)
         {

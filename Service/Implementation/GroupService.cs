@@ -11,7 +11,7 @@ namespace Service.Implementation
     public class GroupService : IGroupService
     {
         private static int count;
-        private readonly GroupRepository _repository =new();
+        private readonly GroupRepository _repository = new();
         public void CreateGroup(Group group)
         {
             count++;
@@ -30,19 +30,19 @@ namespace Service.Implementation
             return _repository.GetAll();
         }
 
-        public List<Group> GetAllGroupsByRoom(string teacher)
+        public List<Group> GetAllGroupsByRoom(string room)
         {
-            return _repository.GetAll(x=>x.Teacher == teacher);
+            return _repository.GetAll(x => x.Room == room);
         }
 
-        public List<Group> GetAllGroupsByTeacher(string room)
+        public List<Group> GetAllGroupsByTeacher(string teacher)
         {
-            return _repository.GetAll(x=>x.Room == room);
+            return _repository.GetAll(x => x.Teacher == teacher);
         }
 
         public Group GetGroupById(int id)
         {
-            return _repository.Get(x=>x.Id == id);
+            return _repository.Get(x => x.Id == id);
         }
 
         public List<Group> Search(string query)
@@ -51,7 +51,7 @@ namespace Service.Implementation
         }
 
         public Group UpdateGroup(int id, Group group)
-        { 
+        {
             var result = _repository.Update(group, id);
 
             return result;

@@ -7,7 +7,12 @@ namespace PresentationConsoleApp.Controllers
 {
     public class GroupController
     {
-        private readonly GroupService _groupService = new GroupService();
+        private readonly GroupService _groupService;
+
+        public GroupController(GroupService groupService)
+        {
+            _groupService = groupService;
+        }
 
         public void GetAll()
         {
@@ -77,7 +82,7 @@ namespace PresentationConsoleApp.Controllers
 
         public void GetByTeacher(string teacher)
         {
-            var results = _groupService.GetAllGroupsByRoom(teacher);
+            var results = _groupService.GetAllGroupsByTeacher(teacher);
             Console.WriteLine($"Groups taught by {teacher}:");
             foreach (var group in results)
             {
@@ -87,7 +92,7 @@ namespace PresentationConsoleApp.Controllers
 
         public void GetByRoom(string room)
         {
-            var results = _groupService.GetAllGroupsByTeacher(room);
+            var results = _groupService.GetAllGroupsByRoom(room);
             Console.WriteLine($"Groups in room {room}:");
             foreach (var group in results)
             {

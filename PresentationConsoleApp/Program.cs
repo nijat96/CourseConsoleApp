@@ -1,6 +1,7 @@
 ﻿using System;
 using Domain.Entities;
 using PresentationConsoleApp.Controllers;
+using Service.Implementation;
 
 namespace PresentationConsoleApp
 {
@@ -8,8 +9,10 @@ namespace PresentationConsoleApp
     {
         static void Main(string[] args)
         {
-            var groupController = new GroupController();
-            var studentController = new StudentController();
+            var studentService = new StudentService();
+            var groupService = new GroupService();
+            var groupController = new GroupController(groupService);
+            var studentController = new StudentController(studentService,groupService);
             bool exit = false;
 
             while (!exit)
@@ -70,7 +73,11 @@ namespace PresentationConsoleApp
                         break;
                     case "2":
                         Console.Write("Enter group ID: ");
-                        int id = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.GetById(id);
                         break;
                     case "3":
@@ -85,7 +92,11 @@ namespace PresentationConsoleApp
                         break;
                     case "4":
                         Console.Write("Enter group ID to update: ");
-                        int updateId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int updateId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         Console.Write("Enter new group name: ");
                         string newName = Console.ReadLine();
                         Console.Write("Enter new teacher: ");
@@ -97,7 +108,11 @@ namespace PresentationConsoleApp
                         break;
                     case "5":
                         Console.Write("Enter group ID to delete: ");
-                        int deleteId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int deleteId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.Delete(deleteId);
                         break;
                     case "6":
@@ -154,7 +169,11 @@ namespace PresentationConsoleApp
                         break;
                     case "2":
                         Console.Write("Enter student ID: ");
-                        int id = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.GetById(id);
                         break;
                     case "3":
@@ -171,7 +190,11 @@ namespace PresentationConsoleApp
                         break;
                     case "4":
                         Console.Write("Enter student ID to update: ");
-                        int updateId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int updateId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         Console.Write("Enter new name: ");
                         string newName = Console.ReadLine();
                         Console.Write("Enter new surname: ");
@@ -179,13 +202,21 @@ namespace PresentationConsoleApp
                         Console.Write("Enter new age: ");
                         int newAge = int.Parse(Console.ReadLine());
                         Console.Write("Enter new group ID: ");
-                        int newGroupId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int newGroupId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         var updatedStudent = new Student(newName,newSurname,newAge,newGroupId);
                         controller.Update(updateId, updatedStudent);
                         break;
                     case "5":
                         Console.Write("Enter student ID to delete: ");
-                        int deleteId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int deleteId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.Delete(deleteId);
                         break;
                     case "6":
@@ -195,12 +226,20 @@ namespace PresentationConsoleApp
                         break;
                     case "7":
                         Console.Write("Enter age: ");
-                        int searchAge = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int searchAge))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.GetByAge(searchAge);
                         break;
                     case "8":
                         Console.Write("Enter group ID: ");
-                        int searchGroupId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int searchGroupId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.GetByGroupId(searchGroupId);
                         break;
                     case "9":
@@ -211,9 +250,17 @@ namespace PresentationConsoleApp
                         break;
                     case "11":
                         Console.Write("Enter page number: ");
-                        int page = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int page))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         Console.Write("Enter page size: ");
-                        int pageSize = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int pageSize))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         controller.GetPaged(page, pageSize);
                         break;
                     case "12":

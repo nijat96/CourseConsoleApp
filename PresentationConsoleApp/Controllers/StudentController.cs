@@ -3,12 +3,20 @@ using Service.Implementation;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using PresentationConsoleApp.Validation;
 
 namespace PresentationConsoleApp.Controllers
 {
     public class StudentController
     {
-        private readonly StudentService _studentService = new StudentService();
+        private readonly StudentService _studentService;
+        private readonly GroupService _groupService;
+
+        public StudentController(StudentService studentService, GroupService groupService)
+        {
+            _studentService = studentService;
+            _groupService = groupService;
+        }
 
         public void GetAll()
         {
@@ -31,17 +39,28 @@ namespace PresentationConsoleApp.Controllers
 
         public void Create(Student student)
         {
-            _studentService.CreateStudent(student);
-            Console.WriteLine($"Student '{student.Name}' created successfully.");
+            if (StudentValidation.CheckName(student.Name) && StudentValidation.CheckName(student.Surname) && 
+                Service.Validations.StudentValidation.CheckStudentGroupId(student.GroupId,_groupService))
+            {
+                _studentService.CreateStudent(student);
+                Console.WriteLine($"Student '{student.Name}' created successfully.");
+            }
+            else
+            {
+                Console.WriteLine("xeta ");
+            }
         }
 
         public void Update(int id, Student student)
         {
-            var updated = _studentService.UpdateSudent(id, student);
-            if (updated != null)
-                Console.WriteLine($"Student {id} updated successfully.");
-            else
-                Console.WriteLine("Update failed. Student not found.");
+            if (StudentValidation.CheckName(student.Name) && StudentValidation.CheckName(student.Surname))
+            {
+                var updated = _studentService.UpdateStudent(id, student);
+                if (updated != null)
+                    Console.WriteLine($"Student {id} updated successfully.");
+                else
+                    Console.WriteLine("Update failed. Student not found.");
+            }
         }
 
         public void Delete(int id)
