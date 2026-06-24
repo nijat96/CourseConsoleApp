@@ -78,7 +78,8 @@ namespace PresentationConsoleApp.Controllers
         {
             try
             {
-                if (StudentValidation.CheckName(student.Name) && StudentValidation.CheckName(student.Surname))
+                if (StudentValidation.CheckName(student.Name) && StudentValidation.CheckName(student.Surname) &&
+                    Service.Validations.StudentValidation.CheckStudentGroupId(student.GroupId,_groupService))
                 {
                     var updated = _studentService.UpdateStudent(id, student);
                     if (updated != null)

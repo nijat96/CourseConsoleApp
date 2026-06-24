@@ -16,87 +16,143 @@ namespace PresentationConsoleApp.Controllers
 
         public void GetAll()
         {
-            Console.WriteLine($"| {"ID",-5} | {"Group name",-12} | {"Teacher",-12} | {"Room",-6} |");
-            var result = _groupService.GetAllGroups();
-            foreach (var group in result)
+            try
             {
-                Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                Console.WriteLine($"| {"ID",-5} | {"Group name",-12} | {"Teacher",-12} | {"Room",-6} |");
+                var result = _groupService.GetAllGroups();
+                foreach (var group in result)
+                {
+                    Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void GetById(int id)
         {
-            var group = _groupService.GetGroupById(id);
-            if (group != null)
+            try
             {
-                Console.WriteLine($"Found group: {group.Id} - {group.Name} ({group.Teacher}, Room {group.Room})");
+                var group = _groupService.GetGroupById(id);
+                if (group != null)
+                {
+                    Console.WriteLine($"Found group: {group.Id} - {group.Name} ({group.Teacher}, Room {group.Room})");
+                }
+                else
+                {
+                    Console.WriteLine("Group not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Group not found.");
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void Create(Group group)
         {
-            _groupService.CreateGroup(group);
-            Console.WriteLine($"Group '{group.Name}' created successfully.");
+            try
+            {
+                _groupService.CreateGroup(group);
+                Console.WriteLine($"Group '{group.Name}' created successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Update(int id, Group group)
         {
-            var updated = _groupService.UpdateGroup(id, group);
-            if (updated != null)
+            try
             {
-                Console.WriteLine($"Group {id} updated successfully.");
+                var updated = _groupService.UpdateGroup(id, group);
+                if (updated != null)
+                {
+                    Console.WriteLine($"Group {id} updated successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Update failed. Group not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Update failed. Group not found.");
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void Delete(int id)
         {
-            var existing = _groupService.GetGroupById(id);
-            if (existing != null)
+            try
             {
-                _groupService.DeleteGroup(id);
-                Console.WriteLine($"Group {id} deleted successfully.");
+                var existing = _groupService.GetGroupById(id);
+                if (existing != null)
+                {
+                    _groupService.DeleteGroup(id);
+                    Console.WriteLine($"Group {id} deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Delete failed. Group not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Delete failed. Group not found.");
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void Search(string query)
         {
-            var results = _groupService.Search(query);
-            Console.WriteLine($"Search results for '{query}':");
-            foreach (var group in results)
+            try
             {
-                Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                var results = _groupService.Search(query);
+                Console.WriteLine($"Search results for '{query}':");
+                foreach (var group in results)
+                {
+                    Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void GetByTeacher(string teacher)
         {
-            var results = _groupService.GetAllGroupsByTeacher(teacher);
-            Console.WriteLine($"Groups taught by {teacher}:");
-            foreach (var group in results)
+            try
             {
-                Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                var results = _groupService.GetAllGroupsByTeacher(teacher);
+                Console.WriteLine($"Groups taught by {teacher}:");
+                foreach (var group in results)
+                {
+                    Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void GetByRoom(string room)
         {
-            var results = _groupService.GetAllGroupsByRoom(room);
-            Console.WriteLine($"Groups in room {room}:");
-            foreach (var group in results)
+            try
             {
-                Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                var results = _groupService.GetAllGroupsByRoom(room);
+                Console.WriteLine($"Groups in room {room}:");
+                foreach (var group in results)
+                {
+                    Console.WriteLine($"| {group.Id,-5} | {group.Name,-12} | {group.Teacher,-12} | {group.Room,-6} |");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -14,7 +14,22 @@ namespace Repository.Repositories.Implementation
             {
                 throw new NullModelException();
             }
+            if (IsExist(entity))
+            {
+                throw new DublicateDataException();
+            }
             _groups.list.Add(entity);
+        }
+        private bool IsExist(Group entity)
+        {
+            if (_groups.list.Count == 0)
+                return false;
+            foreach (var group in _groups.list)
+            {
+                if(group.Name == entity.Name)
+                    return true;
+            }
+            return false;
         }
 
         public void Delete(Group entity)
