@@ -182,9 +182,17 @@ namespace PresentationConsoleApp
                         Console.Write("Enter student surnamename: ");
                         string surname = Console.ReadLine();
                         Console.Write("Enter age: ");
-                        int age = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int age))
+                        {
+                            Console.WriteLine("Invalid age.");
+                            return;
+                        }
                         Console.Write("Enter group ID: ");
-                        int groupId = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int groupId))
+                        {
+                            Console.WriteLine("Invalid ID.");
+                            return;
+                        }
                         var newStudent = new Student(name,surname,age,groupId);
                         controller.Create(newStudent);
                         break;
@@ -200,7 +208,11 @@ namespace PresentationConsoleApp
                         Console.Write("Enter new surname: ");
                         string newSurname = Console.ReadLine();
                         Console.Write("Enter new age: ");
-                        int newAge = int.Parse(Console.ReadLine());
+                        if (!int.TryParse(Console.ReadLine(), out int newAge))
+                        {
+                            Console.WriteLine("Invalid age.");
+                            return;
+                        }
                         Console.Write("Enter new group ID: ");
                         if (!int.TryParse(Console.ReadLine(), out int newGroupId))
                         {
@@ -228,7 +240,7 @@ namespace PresentationConsoleApp
                         Console.Write("Enter age: ");
                         if (!int.TryParse(Console.ReadLine(), out int searchAge))
                         {
-                            Console.WriteLine("Invalid ID.");
+                            Console.WriteLine("Invalid age.");
                             return;
                         }
                         controller.GetByAge(searchAge);
@@ -252,13 +264,13 @@ namespace PresentationConsoleApp
                         Console.Write("Enter page number: ");
                         if (!int.TryParse(Console.ReadLine(), out int page))
                         {
-                            Console.WriteLine("Invalid ID.");
+                            Console.WriteLine("Invalid number.");
                             return;
                         }
                         Console.Write("Enter page size: ");
                         if (!int.TryParse(Console.ReadLine(), out int pageSize))
                         {
-                            Console.WriteLine("Invalid ID.");
+                            Console.WriteLine("Invalid size.");
                             return;
                         }
                         controller.GetPaged(page, pageSize);
